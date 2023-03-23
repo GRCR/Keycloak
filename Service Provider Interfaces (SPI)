@@ -1,0 +1,15 @@
+Keycloak Service Provider Interfaces (SPI): 
+-------------------------------------------
+1.Extending the server with
+    -Custom REST endpoints
+    -Custom SPI
+2.JavaScript providers
+3.Authentication SPI
+4.Action Token Handler SPI
+5.Event Listener SPI
+6.SAML role mappings SPI
+7.User Storage SPI
+8.Vault SPI
+
+Reference URL: https://www.keycloak.org/docs/latest/server_development/
+--------------

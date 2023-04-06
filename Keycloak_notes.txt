@@ -1,0 +1,12 @@
+Start cmd: bin\kc.bat start-dev --http-port 8180
+As default port is 8080
+
+Another command: bin\kc.bat start-dev -Djboss.socket.binding.port-offset-100  // 8080+100=8180 port
+
+In Docker: bin % docker run -it -p 8080:8080 --name keycloak -e KEYCLOAK _USER=admin -e KEYCLOAK_PASSWORD=password jboss\keycloak
+
+set JAVA_OPTS=-Xms128m -Xmx1024m ## Modify default memory allocation, Global environment
+set JAVA_OPTS_APPEND=-Xms256m -Xmx2048m , adding options to the JVM, rather than Keycloak itself
+
+
+/bin/kc.sh build  ## After adding jar into providers folder

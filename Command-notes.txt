@@ -1,0 +1,32 @@
+docker compose -f docker-compose-cluster.yml up
+
+docker ps -a  ## List all running containers
+
+docker kill <container-name>  #Ex. docker kill kc1
+
+E:\keycloak_cluster\nginx.conf
+
+docker exec -it <container id-8f8d58d673d0> bash  ## access
+
+docker cp keycloak-federationDB.jar <ContainerID>:/opt/keycloak/providers/   ## Copy file into keycloak service folder
+
+
+
+For Cluster in 21.0.1 version: 
+*--------*--------*----------*
+URL: https://github.com/ivangfr/keycloak-clustered
+URL: [(Not Implemented) (https://gist.github.com/xgp/768eea11f92806b9c83f95902f7f8f80)]
+1. C:\Users\DELL\Downloads\Compressed\keycloak-clustered-master\keycloak-clustered-master\21.0.1>docker build -t ivanfranchin/keycloak-clustered:latest .
+
+2. docker network create keycloak-net
+
+3.  docker run --rm --name postgres -p 5432:5432 -e POSTGRES_DB=keycloak -e POSTGRES_USER=keycloak -e POSTGRES_PASSWORD=keycloak --network keycloak-net postgres:15.2
+
+4. docker run --rm --name keycloak-clustered-1 -p 8082:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_DB=postgres -e KC_DB_URL_HOST=postgres -e KC_DB_URL_DATABASE=keycloak -e KC_DB_SCHEMA=myschema -e KC_DB_USERNAME=keycloak -e KC_DB_PASSWORD=keycloak -e KC_LOG_LEVEL=INFO,org.infinispan:DEBUG,org.jgroups:DEBUG -e JGROUPS_DISCOVERY_EXTERNAL_IP=keycloak-clustered-1 --network keycloak-net ivanfranchin/keycloak-clustered:latest start-dev
+
+5. docker run --rm --name keycloak-clustered-2 -p 8081:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_DB=postgres -e KC_DB_URL_HOST=postgres -e KC_DB_URL_DATABASE=keycloak -e KC_DB_SCHEMA=myschema -e KC_DB_USERNAME=keycloak -e KC_DB_PASSWORD=keycloak -e KC_LOG_LEVEL=INFO,org.infinispan:DEBUG,org.jgroups:DEBUG -e JGROUPS_DISCOVERY_EXTERNAL_IP=keycloak-clustered-2 --network keycloak-net ivanfranchin/keycloak-clustered:latest start-dev
+
+6. docker exec -it postgres psql -U keycloak
+	6.1. \dt myschema.*
+	6.2. SELECT * FROM myschema.JGROUPSPING;
+	6.3. /q

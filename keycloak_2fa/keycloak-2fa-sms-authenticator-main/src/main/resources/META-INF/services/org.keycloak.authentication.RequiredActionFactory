@@ -1,0 +1,5 @@
+custom.keycloak.requiredaction.OtpTypeRequiredActionFactory
+custom.keycloak.requiredaction.MobileNumberRequiredActionFactory
+custom.keycloak.requiredaction.EmailRequiredActionFactory
+custom.keycloak.requiredaction.SecretQuestionRequiredActionFactory
+

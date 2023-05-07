@@ -1,0 +1,5 @@
+ieims.keycloak.requiredaction.OtpTypeRequiredActionFactory
+ieims.keycloak.requiredaction.MobileNumberRequiredActionFactory
+ieims.keycloak.requiredaction.EmailRequiredActionFactory
+ieims.keycloak.requiredaction.SecretQuestionRequiredActionFactory
+

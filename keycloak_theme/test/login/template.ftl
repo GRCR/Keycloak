@@ -109,7 +109,7 @@ ${msg("restartLoginTooltip")}
                 </div>
             <#else>
                 <#nested "show-username">
-                <div id="kc-username" class="${properties.kcFormGroupClass!}">
+                <#--  <div id="kc-username" class="${properties.kcFormGroupClass!}">
                     <label id="kc-attempted-username">
 ${auth.attemptedUsername}
 </label>
@@ -121,12 +121,12 @@ ${msg("restartLoginTooltip")}
 </span>
                         </div>
                     </a>
-                </div>
+                </div>  -->
             </#if>
         </#if>
       </header>
       <div id="kc-content">
-        <div id="kc-content-wrapper">
+        <div id="kc-content-wrapper" class="relative">
           <#-- App-initiated actions should not see warning messages about the need to complete the action -->
           <#-- during login.                                                                               -->
           <#if displayMessage && message?has_content && (message.type != ' warning' || !isAppInitiatedAction??)>
@@ -140,7 +140,7 @@ ${msg("restartLoginTooltip")}
                                         <#elseif message.type='info'>
                                             <#assign alertColor="blue">
                 </#if>
-                <div id="alertDialog" class="flex items-center bg-${alertColor}-100 border border-${alertColor}-400 mt-3 py-2 px-3 shadow-md mb-2 rounded max-w-sm mx-auto" role="alert">
+                <div id="alertDialog" class="absolute top-12 left-0 right-0 flex items-center bg-${alertColor}-100 border border-${alertColor}-400 mt-3 py-2 px-3 shadow-md mb-2 rounded max-w-sm mx-auto" role="alert">
                     <!-- icons -->
                     <div class="text-white rounded-full bg-${alertColor}-400 mr-3 min-w-fit">
                         <#-- success -->

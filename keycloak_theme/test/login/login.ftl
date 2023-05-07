@@ -38,7 +38,7 @@
                                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
                                                         <#list locale.supported as l>
                                                             <li class="${properties.kcLocaleListItemClass!}">
-                                                                <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="${l.url}">
+                                                                <a class="<#if locale.current=l.label>pointer-events-none </#if> block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="${l.url}">
                                                                     ${l.label}
                                                                 </a>
                                                             </li>
@@ -130,14 +130,14 @@
                     IEIMS ID number.
                 </div>
                 <a href="#"
-                    class="${properties.kcRegistratrionClass!}">Apply
+                    class="${properties.kcLinkClass!} font-bold mt-2">Apply
                     for IEIMS ID</a>
             </div>
-            <div class="flex items-start flex-col">
+            <div class="flex items-start flex-col pl-2">
                 <div class="font-bold">Create Public Account</div>
                 <div class="text-sm">If you are not and ...</div>
                 <a href="#"
-                    class="${properties.kcRegistratrionClass!}">Create
+                    class="${properties.kcLinkClass!} font-bold mt-2">Create
                     Public Account</a>
             </div>
         </div>
